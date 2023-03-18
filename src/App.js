@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { Routes, Route } from 'react-router-dom'
+import Categories from './pages/Categories/Categories';
+import AddCategory from './pages/AddCategory/AddCategory';
+import SubCategory from './pages/SubCategory/SubCategory';
+import AddSubCategory from './pages/AddSubCategory/AddSubCategory';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    < >
+      <Routes>
+        <Route path='/' element={<Categories />} />
+        <Route path='/categories' element={<Categories />} />
+        <Route path='/addcategory' element={<AddCategory />} />
+        <Route path='/addcategory/:id' element={<AddCategory />} />
+        <Route path='/Subcategory' element={<SubCategory />} />
+        <Route path='/addSubCategory' element={<AddSubCategory />} />
+        <Route path='/addSubCategory/:id' element={<AddSubCategory />} />
+
+
+
+      </Routes>
+
+
+    </>
   );
 }
 
