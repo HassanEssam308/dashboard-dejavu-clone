@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import categoriesReducer from "./categoriesReducer";
 import subCategoriesReducer from "./subCategoriesReducer";
+import ProductReducer from './ProductListReducer'
 
 
 export default combineReducers({
-    // moviesFav: moviesFavReducer,
+    
     categories: categoriesReducer,
-    subCategories:subCategoriesReducer
+    subCategories:subCategoriesReducer,
+    products:ProductReducer
 })

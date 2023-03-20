@@ -1,0 +1,8 @@
+.productnav  {
+    color: #6d6666;
+
+}
+.productnav :link:hover {
+    text-decoration: underline;
+ }
+ 
