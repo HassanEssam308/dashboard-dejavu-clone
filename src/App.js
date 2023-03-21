@@ -8,6 +8,7 @@ import SubCategory from './pages/SubCategory/SubCategory';
 import AddSubCategory from './pages/AddSubCategory/AddSubCategory';
 import AddProduct from './pages/AddPoduct/addproduct';
 import Products1 from './pages/Products/product';
+import OrderDetails from './pages/OrderDetails/OrderDetails';
 
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
        <Routes>
         <Route path='/' element={<Categories />} />
         <Route path='/categories' element={<Categories />} />
-  
         <Route path='/addcategory' element={<AddCategory />} />
         <Route path='/addcategory/:id' element={<AddCategory />} />
         <Route path='/Subcategory' element={<SubCategory />} />
@@ -26,6 +26,7 @@ function App() {
         <Route path='/products' element={<Products1/>}></Route>      
         <Route path='/addproduct/:id' element={<AddProduct/>}></Route>    
         <Route path='/addproduct' element={<AddProduct/>}></Route>   
+        <Route path='/OrderDetails' element={<OrderDetails/>}></Route>
       </Routes> 
 
 

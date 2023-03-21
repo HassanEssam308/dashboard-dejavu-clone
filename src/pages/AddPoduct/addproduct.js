@@ -13,7 +13,7 @@ const AddProduct = () => {
     const productslist = useSelector((state) => state.products.products);
     const dispatch = useDispatch();
     const { id } = useParams();
-    
+    const[color,setcolor]=useState({});
     const [product,setproduc]=useState({
         catid:'',
         subid:'',
@@ -36,6 +36,8 @@ const AddProduct = () => {
         if(id){
        const prd=productslist.find(prd => prd.id == id);
         console.log(prd);
+        setcolor(prd.colors);
+        console.log(color);
         setproduc({...prd});
         }
     },[])
@@ -191,10 +193,9 @@ const AddProduct = () => {
                     </div>
                     <br />
                     <div className="form-group row">
-                        <label Htmlfor="colors" className="col-sm-2 col-form-label">Color</label>
+                        <label Htmlfor="colors" className="col-sm-2 col-form-label" >Color</label>
                         <div className="col-sm-10">
-                           
-
+                          
                         
                             <input name='colors' type="text" className="form-control" id="colors" placeholder="color" onChange={(e) => handleform(e)} value={product.colors.value}/>
                         </div>
@@ -203,7 +204,7 @@ const AddProduct = () => {
                     <div className="form-group row">
                         <label Htmlfor="details" className="col-sm-2 col-form-label">Details</label>
                         <div className="col-sm-10">
-                            <input name='details' type="text" className="form-control" id="details" placeholder="color" onChange={(e) => handleform(e)} value={product.details[0]}/>
+                            <input name='details' type="text" className="form-control" id="details" placeholder="Details" onChange={(e) => handleform(e)} value={product.details[0]}/>
                         </div>
                     </div>
                     <br />
