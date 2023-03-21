@@ -107,7 +107,7 @@ const AddSubCategory = () => {
 
     }
 
-
+  const goBack =()=>{navigate(-1)}
 
 
     return (
@@ -116,11 +116,12 @@ const AddSubCategory = () => {
 
             <article className="w-75 mx-auto my-4">
                 <h2 className="mb-5" >{titleOfPage}</h2>
-                <Link to="/">
+                {/* <Link to="/"> */}
                     <div className="text-end " >
-                        <button type="button" className="btn btn-secondary px-4 rounded-0">Cancel</button>
+                        <button   type="button" 
+                        className="btn btn-secondary px-4 rounded-0" onClick={goBack} >Cancel</button>
                     </div>
-                </Link>
+                {/* </Link> */}
 
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label mb-0 ms-1">Name</label>
