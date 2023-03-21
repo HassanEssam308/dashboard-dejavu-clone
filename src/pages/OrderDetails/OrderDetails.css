@@ -1,0 +1,57 @@
+.button1
+{
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: whitesmoke;
+    border: 0;
+    padding: 0.4rem 0.8rem;
+}
+
+.button2
+{
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: rgb(255, 217, 0);
+    border: 0;
+    padding: 0.4rem 0.8rem;
+}
+
+.bg1
+{
+    background-color: rgb(172, 255, 47);
+    color: green;
+    text-align: center;
+    padding: 3px 6px;
+}
+
+.bg2
+{
+    background-color: rgb(255, 153, 0);
+    color: red;
+    text-align: center;
+    padding: 3px 6px;
+}
+
+.recordItem
+{
+    color: blue;
+    text-decoration: none;
+}
+
+.recordItem:hover
+{
+    text-decoration: underline;
+    color: blue;
+}
+
+.record
+{
+    color: blue;
+    text-decoration: none;
+}
+
+.record:hover
+{
+    color: blue;
+    text-decoration: underline;
+}
