@@ -32,7 +32,7 @@ const Products1 = () => {
      const   categoryname1= (catid) => {
         console.log(catid);
         if (categories1.length>0) {
-           // console.log(categories1);
+           console.log(categories1);
             if(categories1.find((cat) => cat.id == catid)){
                //setname(cat1);
             return (categories1.find((cat) => cat.id == catid).name);

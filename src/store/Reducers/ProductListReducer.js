@@ -1,8 +1,8 @@
 
-const Init={
+const Inite={
     products:[]
 }
-export default function ProductReducer(state=Init,action){
+export default function ProductReducer(state=Inite,action){
     switch(action.type){
         case "Set_Products":
             return{...state,products:action.payload};

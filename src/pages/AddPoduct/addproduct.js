@@ -95,8 +95,8 @@ const AddProduct = () => {
         updateDoc(docRef,product).then(()=>{
             dispatch(ProductsList());
             console.log("Entire Document has been updated successfully.")
-        }).catch((err)=>{
-            console.log(err);
+        }).catch((error)=>{
+            console.log(error);
         })
       }
     }else{

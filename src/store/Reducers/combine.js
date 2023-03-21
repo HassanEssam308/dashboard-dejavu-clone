@@ -8,5 +8,5 @@ export default combineReducers({
     
     categories: categoriesReducer,
     subCategories:subCategoriesReducer,
-    products:ProductReducer
+    products:ProductReducer,
 })

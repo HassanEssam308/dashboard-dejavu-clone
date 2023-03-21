@@ -7,8 +7,8 @@ export default function ProductsList() {
 
         try {
             const response = await getDocs(collection(db, "product"));
-            const productslist = response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-            dispatch({ type: "Set_Products", payload: productslist });
+            const productslist= response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+            dispatch({ type: "Set_Products", payload: productslist});
         } catch (err) {
             console.log(err);
         }
