@@ -29,7 +29,7 @@ const Products1 = () => {
 
         
         //console.log(product);
-
+        //console.log(product);
         console.log(productslist);
     }, [])
 
