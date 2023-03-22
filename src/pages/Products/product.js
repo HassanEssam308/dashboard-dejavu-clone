@@ -6,6 +6,8 @@ import { db } from '../../config/firestore_config';
 import ProductsList from '../../store/Actions/ProductsList';
 import './product.css'
 import changeCategories from '../../store/Actions/categoriesAction';
+import changeSubCategories from '../../store/Actions/subCategoriesAction';
+
 import { async } from '@firebase/util';
 
 const Products1 = () => {
@@ -14,18 +16,20 @@ const Products1 = () => {
     const [quer, setquer] = useState('');
     const [product, setproduct] = useState([]);
     const productslist = useSelector((state) => state.products.products);
-
-    const categories1 = useSelector((stat) => stat.categories.categories)
+    const categories1 = useSelector((stat) => stat.categories.categories);
+    const subcategory = useSelector((stat) => stat.subCategories.subCategories);
     const [name, setname] = useState({});
     // console.log(productslist);
 
 
     useEffect(() => {
         dispatch(ProductsList());
-        dispatch(changeCategories())
+        dispatch(changeCategories());
+        dispatch(changeSubCategories());
+
         
         //console.log(product);
-
+        //console.log(product);
         console.log(productslist);
     }, [])
 
@@ -41,6 +45,19 @@ const Products1 = () => {
         }else{
             return '';
         }
+
+    }
+    const subcategoryname=(subid)=>{
+        if (subcategory.length>0) {
+            console.log(subcategory);
+             if(subcategory.find((subcategory) => subcategory.id == subid)){
+                //setname(cat1);
+             return (subcategory.find((subcategory) => subcategory.id == subid).name);
+             }
+           
+         }else{
+             return '';
+         }
 
     }
 
@@ -90,8 +107,8 @@ const Products1 = () => {
                             <button type="button" className="btn btn-warning rounded-0"> New Product </button></Link>
                     </div>
                 </div>
-                <div className="table-responsive-md m-sm-4 ">
-                    <div className="form-outline">
+                <div className="table-responsive-md  ">
+                    <div className="form-outline" style={{width:'40'}}>
                         <input
                             type="search" id="form1"
                             className="form-control rounded-0"
@@ -101,43 +118,51 @@ const Products1 = () => {
                         />
                     </div>
 
-                    <table className="table table-light ">
+                    <table className="table-responsive mx-1 mb-5 bg-white p-1 shadow">
                         <thead>
                             <tr>
+                            
                                 <th className="ps-sm-3" scope="col">Product</th>
                                 <th scope="col">Category</th>
+                                <th scope="col">SubCategory</th>
                                 <th scope="col">Quntity</th>
                                 <th scope="col">Price</th>
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style={{color:'#033E3E'}}>
                             {productslist.filter(
                                 (prd) => prd.name.includes(quer)).map((prd) => {
                                     return (
                                       
                                             <tr key={prd.id}>
-                                                <td className="col-md-4">
-                                                    <img src={prd.imgs[0]} className="col-1 shadow-sm border border-1 rounded-2 m-2" alt="" />
+                                            
+                                                <td className="col-md-3 fst-italic text-info-emphasis">
+                                                    <img src={prd.imgs[0]} className="col-2 shadow-sm border border-1 rounded-2 m-2" alt="" />
                                                     <Link to={`/addproduct/${prd.id}`} className="text-decoration-none text-dark">{prd.name}</Link>
                                                 </td>
 
 
-                                                <td className="col-md-3">
+                                                <td className="col-md-2 fst-italic">
                                                     {categoryname1(prd.catid)}
                                                     
 
                                                 </td>
-                                                <td className='col-md-3'>
+                                                <td className="col-md-2 fst-italic">
+                                                    {subcategoryname(prd.subid)}
+                                                    
+
+                                                </td>
+                                                <td className='col-md fst-italic'>
                                                     {getquntity(prd.colors)}
                                                 </td>
 
 
-                                                <td className="col-md-3">
+                                                <td className="col-md fst-italic">
                                                     {prd.new_price}$
                                                 </td>
 
-                                                <td className='col-md-3'>
+                                                <td className='col-md fst-italic'>
                                                     <div className="dropdown">
                                                         <button className="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                             :
