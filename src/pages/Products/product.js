@@ -107,7 +107,7 @@ const Products1 = () => {
                             <button type="button" className="btn btn-warning rounded-0"> New Product </button></Link>
                     </div>
                 </div>
-                <div className="table-responsive-md m-sm-4 ">
+                <div className="table-responsive-md  ">
                     <div className="form-outline" style={{width:'40'}}>
                         <input
                             type="search" id="form1"
