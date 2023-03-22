@@ -6,15 +6,29 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import store from './store/store';
 import { Provider } from 'react-redux';
+import Sidebar from './components/Sidebar/Sidebar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
     <BrowserRouter>
-    <Provider store={store} >
-    <App />
-    </Provider>
+      <Provider store={store} >
+      
+          <main className='d-flex ' >
+            <aside className='col-3  col-md-2 ' >
+            <Sidebar />
+            </aside>
+
+            <aside  className='col-9  mx-auto   ' >
+                 <App />
+            </aside>
+         
+         
+          </main>
+
+
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
