@@ -8,12 +8,16 @@ import SubCategory from './pages/SubCategory/SubCategory';
 import AddSubCategory from './pages/AddSubCategory/AddSubCategory';
 import AddProduct from './pages/AddPoduct/addproduct';
 import Products1 from './pages/Products/product';
+
+import OrdersList from './pages/OrdersList/OrdersList';
 import OrderDetails from './pages/OrderDetails/OrderDetails';
+import Sidebar from './components/Sidebar/Sidebar';
+
 
 
 function App() {
   return (
-    < >
+    <section>
 
        <Routes>
         <Route path='/' element={<Categories />} />
@@ -25,12 +29,15 @@ function App() {
         <Route path='/addSubCategory/:id' element={<AddSubCategory />} />
         <Route path='/products' element={<Products1/>}></Route>      
         <Route path='/addproduct/:id' element={<AddProduct/>}></Route>    
-        <Route path='/addproduct' element={<AddProduct/>}></Route>   
-        <Route path='/OrderDetails' element={<OrderDetails/>}></Route>
+
+        <Route path='/addproduct' element={<AddProduct/>}></Route> 
+        <Route path='/ordersList' element={<OrdersList />} />
+        <Route path='/orderDetails' element={<OrderDetails />} />  
+
       </Routes> 
 
 
-    </>
+    </section>
   );
 }
 
