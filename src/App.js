@@ -8,12 +8,11 @@ import SubCategory from './pages/SubCategory/SubCategory';
 import AddSubCategory from './pages/AddSubCategory/AddSubCategory';
 import AddProduct from './pages/AddPoduct/addproduct';
 import Products1 from './pages/Products/product';
-import OrderDetails from './pages/OrderDetails/OrderDetails';
 
 
 function App() {
   return (
-    < >
+    <section>
 
        <Routes>
         <Route path='/' element={<Categories />} />
@@ -26,11 +25,10 @@ function App() {
         <Route path='/products' element={<Products1/>}></Route>      
         <Route path='/addproduct/:id' element={<AddProduct/>}></Route>    
         <Route path='/addproduct' element={<AddProduct/>}></Route>   
-        <Route path='/OrderDetails' element={<OrderDetails/>}></Route>
       </Routes> 
 
 
-    </>
+    </section>
   );
 }
 

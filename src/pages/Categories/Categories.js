@@ -62,11 +62,6 @@ const Categories = () => {
 
     return (
         <section>
-            <nav className="nav justify-content-center  ">
-                <Link to='/SubCategory' className="nav-link active" >Subcategory</Link>
-
-
-            </nav>
             <article className='m-sm-4' >
                 <h2 className='h6.'>Categories</h2>
                 <div className='text-end me-sm-5'>

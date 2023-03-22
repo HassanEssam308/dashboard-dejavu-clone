@@ -2,8 +2,7 @@ import './OrderDetails.css'
 
 export default function OrderDetails()
 {
-    return (
-        <>
+    return (<>
         <div className='container-fluid bg-light'>
             <section className='row'>
                     <div className='col m-4'>
