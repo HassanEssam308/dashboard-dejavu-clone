@@ -7,7 +7,8 @@ const Sidebar = () => {
 
 
 
-    <div style={{ backgroundColor: "rgb(61, 70, 77)" }} className=" w-100 pt-5 vh-100  d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 ps-md-4   text-white  w-100">
+    <div style={{ backgroundColor: "rgb(61, 70, 77)" }} className=" h-100  min-vh-100  pt-5 
+      d-flex flex-column align-items-stretch  align-items-sm-start px-3 pt-2 ps-md-4   text-white  w-100">
 
       <span className="fs-5">Dejavu</span>
 
