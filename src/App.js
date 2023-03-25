@@ -11,6 +11,9 @@ import Products1 from './pages/Products/product';
 import OrdersList from './pages/OrdersList/OrdersList';
 import OrderDetails from './pages/OrderDetails/OrderDetails';
 import Sidebar from './components/Sidebar/Sidebar';
+import CustomerList from './pages/CustomerList/CustomerList'
+import Customer from './pages/Customer/Customer'
+ 
 
 
 function App() {
@@ -31,6 +34,8 @@ function App() {
         <Route path='/addproduct' element={<AddProduct/>}></Route> 
         <Route path='/ordersList' element={<OrdersList />} />
         <Route path='/orderDetails' element={<OrderDetails />} />  
+        <Route path='/customers' element={<CustomerList />} />  
+        <Route path='/customer' element={<Customer />} />  
       </Routes> 
 
 
