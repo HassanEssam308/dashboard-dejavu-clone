@@ -8,6 +8,8 @@ import SubCategory from './pages/SubCategory/SubCategory';
 import AddSubCategory from './pages/AddSubCategory/AddSubCategory';
 import AddProduct from './pages/AddPoduct/addproduct';
 import Products1 from './pages/Products/product';
+import CustomerList from './components/CustomerList/CustomerList';
+import Customer from './components/Customer/Customer';
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
         <Route path='/products' element={<Products1/>}></Route>      
         <Route path='/addproduct/:id' element={<AddProduct/>}></Route>    
         <Route path='/addproduct' element={<AddProduct/>}></Route>   
+        <Route path='/customers' element={<CustomerList/>}></Route> 
+        <Route path='/customer' element={<Customer/>}></Route> 
       </Routes> 
 
 

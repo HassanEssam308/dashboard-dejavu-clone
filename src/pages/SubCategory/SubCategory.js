@@ -62,7 +62,7 @@ const SubCategory = () => {
                         <tr>
                             <th className="ps-sm-3" scope="col">Name</th>
                             <th className="ps-sm-3" scope="col">Category</th>
-                            <th scope="col">Edite</th>
+                            <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
