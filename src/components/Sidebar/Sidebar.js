@@ -95,8 +95,17 @@ const Sidebar = () => {
         <li>
           <Link className="  text-decoration-none text-white px-0 align-middle my-3">
             <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
-              to="/"  > <i className="bi bi-people-fill me-sm-2">
-            </i>Customers  </NavLink> 
+              to="/customers"  > <i className="bi bi-people-fill me-sm-2">
+            </i>Customers List </NavLink> 
+              </Link>
+
+        </li>
+
+        <li>
+          <Link className="  text-decoration-none text-white px-0 align-middle my-3">
+            <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              to="/customer"  > <i className="bi bi-people-fill me-sm-2">
+            </i>Customers </NavLink> 
               </Link>
 
         </li>
