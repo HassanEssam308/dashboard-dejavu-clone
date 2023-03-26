@@ -1,4 +1,5 @@
 import { addDoc, doc, updateDoc,collection,setDoc } from 'firebase/firestore';
+import { text } from '@fortawesome/fontawesome-svg-core';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link,useParams } from 'react-router-dom';
@@ -13,6 +14,7 @@ const AddProduct = () => {
     const productslist = useSelector((state) => state.products.products);
     const dispatch = useDispatch();
     const { id } = useParams();
+    const mpcolor = new Map();
     const[color,setcolor]=useState({});
     const [product,setproduc]=useState({
         catid:'',
@@ -22,7 +24,7 @@ const AddProduct = () => {
         old_price:'',
         size:{},
         offer:'',
-        imgs:'',
+        imgs:[],
         discount:'',
         details:[],
         colors:{}
@@ -30,7 +32,6 @@ const AddProduct = () => {
     const [producterr,setproducerr]=useState({
         catiderr:'',
         subiderr:'',
-       
     })
     useEffect(()=>{
         if(id){
@@ -41,8 +42,7 @@ const AddProduct = () => {
         setproduc({...prd});
         }
     },[])
-
-   
+ 
     //console.log(id);
     const handleform=(ev)=>{
      //  console.log(ev.target.value);
@@ -114,7 +114,28 @@ const AddProduct = () => {
 
     }
     }}
-  
+
+    const [Imgg, SetImg] = useState([])
+    const [Imge, SetImge] = useState('')
+    const Img = (ev) => {
+        console.log(ev.target.value);
+        SetImge(ev.target.value);
+        console.log(Imge);
+    }
+    const Add=()=>{
+        if(Imge!=''){
+           SetImg([...Imgg, Imge]);
+           console.log(Imgg);
+         //product.imgs.push(Imge);
+    
+        }
+      // console.log(product.imgs);
+    }
+    for(let i in product.colors){
+        mpcolor.set(i,product.colors[i]);
+        console.log(mpcolor);
+    }
+
 
     return (
         <>
@@ -134,7 +155,7 @@ const AddProduct = () => {
                 <form>
                 <div className="container-fluid" style={{width: '70%'}}>
                     <div className="form-group row">
-                        <label htmlfor="catid" className="col-sm-2 col-form-label">CategoryId</label>
+                        <label htmlFor="catid" className="col-sm-2 col-form-label">CategoryId</label>
                         <div className="col-sm-10">
                             <input name='catid' type="text" className="form-control" id="ID" placeholder="CategoryID" onChange={(e) => handleform(e)} value={product.catid} />
                             <p className="text-danger">{producterr.catiderr}</p>
@@ -142,7 +163,7 @@ const AddProduct = () => {
                     </div>
                     <br />
                     <div className="form-group row">
-                        <label Htmlfor="SubCategoryId" className="col-sm-2 col-form-label" >SubCategoryId</label>
+                        <label htmlFor="SubCategoryId" className="col-sm-2 col-form-label" >SubCategoryId</label>
                         <div className="col-sm-10">
                             <input name='subid' type="text" className="form-control" id="SubCategoryId" placeholder="SubCategoryId"onChange={(e) => handleform(e)} value={product.subid} />
                             <p className="text-danger">{producterr.subiderr}</p>
@@ -150,21 +171,21 @@ const AddProduct = () => {
                     </div>
                     <br />
                     <div className="form-group row">
-                        <label Htmlfor="name" className="col-sm-2 col-form-label">ProductName</label>
+                        <label htmlFor="name" className="col-sm-2 col-form-label">ProductName</label>
                         <div className="col-sm-10">
                             <input name='name' type="text" className="form-control" id="name" placeholder="ProductName" onChange={(e) => handleform(e)} value={product.name}/>
                         </div>
                     </div>
                     <br />
                     <div className="form-group row">
-                        <label Htmlfor="new_price" className="col-sm-2 col-form-label">New_Price</label>
+                        <label htmlFor="new_price" className="col-sm-2 col-form-label">New_Price</label>
                         <div className="col-sm-10">
                             <input name='new_price' type="number" className="form-control" id="new_price" placeholder="NewPrice" onChange={(e) => handleform(e)} value={product.new_price}/>
                         </div>
                     </div>
                     <br/>
                     <div className="form-group row">
-                        <label Htmlfor="old_price" className="col-sm-2 col-form-label">Old_Price</label>
+                        <label htmlFor="old_price" className="col-sm-2 col-form-label">Old_Price</label>
                         <div className="col-sm-10">
                             <input name='old_price' type="number" className="form-control" id="old_price" placeholder="old_price" onChange={(e) => handleform(e)} value={product.old_price}/>
                         </div>
@@ -172,46 +193,53 @@ const AddProduct = () => {
                     <br />
 
                     <div className="form-group row">
-                        <label Htmlfor="offer" className="col-sm-2 col-form-label">Offer</label>
+                        <label htmlFor="offer" className="col-sm-2 col-form-label">Offer</label>
                         <div className="col-sm-10">
                             <input name='offer' type="boolen" className="form-control" id="offer" placeholder="offer" onChange={(e) => handleform(e)} value={product.offer}/>
                         </div>
                     </div>
                     <br />
                     <div className="form-group row">
-                        <label Htmlfor="discount" className="col-sm-2 col-form-label">Discount</label>
+                        <label htmlFor="discount" className="col-sm-2 col-form-label">Discount</label>
                         <div className="col-sm-10">
                             <input name=' discount' type="text" className="form-control" id="discount" placeholder="discount" onChange={(e) => handleform(e)} value={product.discount}/>
                         </div>
                     </div>
                     <br />
                     <div className="form-group row">
-                        <label Htmlfor="imgs" className="col-sm-2 col-form-label">Imge</label>
-                        <div className="col-sm-10">
-                            <input name='imgs' type="text" className="form-control" id="imgs" placeholder="image" onChange={(e) => handleform(e)} value={product.imgs[0]}/>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="form-group row">
-                        <label Htmlfor="colors" className="col-sm-2 col-form-label" >Color</label>
-                        <div className="col-sm-10">
-                          
-                        
-                            <input name='colors' type="text" className="form-control" id="colors" placeholder="color" onChange={(e) => handleform(e)} value={product.colors.value}/>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="form-group row">
-                        <label Htmlfor="details" className="col-sm-2 col-form-label">Details</label>
+                        <label htmlFor="details" className="col-sm-2 col-form-label">Details</label>
                         <div className="col-sm-10">
                             <input name='details' type="text" className="form-control" id="details" placeholder="Details" onChange={(e) => handleform(e)} value={product.details[0]}/>
                         </div>
                     </div>
                     <br />
+                    <div className="form-group row">
+                        <label htmlFor="imgs" className="col-sm-2 col-form-label">Imge</label>
+                        <div className="col-sm-10">
+                            <input name='imgs' type='text' className="form-control" id="imgs" placeholder="image" onMouseLeave={(ev) => Img(ev)} value={product.imgs[0]}/>      
+                          <button type="button" style={{backgroundColor:'#d7c9a0'}} className="btn btn text-primary-emphasis mt-1 rounded-0  " onClick={Add} >AddImge</button>
+                     
+                        </div>
+                    </div>
+                    <br />
+                    
+                    
+                    <div className="form-group row">
+                        <label htmlFor="colors" className="col-sm-2 col-form-label" >Color</label>
+                        <div className="col-sm-10">
+                        <input name='colors' type="text" className="form-control" id="colors" placeholder="color" onChange={(e) => handleform(e)} value={product.colors.value}/>
+                        <div className='text-end'>
+                        <button type="button" style={{backgroundColor:'#d7c9a0'}} className="btn btn text-primary-emphasis mt-1 rounded-0 text-end " >AddColor</button>
+                        </div>
+                           
+                        </div>
+                    </div>
+                   
+                    <br />
                    
                     </div>
                     <div className='text-end '>
-                    <button type="button" className="btn btn-primary text-primary-emphasis me-5 rounded-0" onClick={upadteproduct}>Add</button>
+                    <button type="button" style={{backgroundColor:'#5a5955'}} className="btn btn text-primary-emphasis me-5 rounded-0" onClick={upadteproduct}>Add</button>
                     </div>
 
              </form>
