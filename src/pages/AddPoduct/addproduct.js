@@ -125,7 +125,7 @@ const AddProduct = () => {
     const Add=()=>{
         if(Imge!=''){
            SetImg([...Imgg, Imge]);
-           console.log(Imgg);
+           //console.log(Imgg);
          //product.imgs.push(Imge);
     
         }

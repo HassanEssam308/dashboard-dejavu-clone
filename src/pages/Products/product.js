@@ -79,9 +79,9 @@ const Products1 = () => {
         }
         console.log(prd);
         if (quntity <=2) {
-            return(<td style={{ width: 100, color: '#900', backgroundColor: '#ffdcdc', fontSize: '.9em', padding: '0.35em 0.65em' }}>{quntity} in stock</td>)
+            return(<td style={{ width: 100, color: '#900', backgroundColor: '#ffdcdc', fontSize: '.9em', padding: '0.35em 0.65em'}}>{quntity} in stock</td>)
         }else if(quntity>2){
-            return(<td style={{ width: 100, color: ' #245900', backgroundColor: '#def2d0', fontSize: '.9em', padding: '0.35em 0.65em' }}>{quntity} in stock</td>)
+            return(<td style={{ width: 100, color: ' #245900', backgroundColor: '#def2d0', fontSize: '.9em', padding: '0.35em 0.65em'}}>{quntity} in stock</td>)
 
         }
 
