@@ -65,7 +65,7 @@ const Categories = () => {
             <article className='m-sm-4' >
                 <h2 className='h6.'>Categories</h2>
                 <div className='text-end me-sm-5'>
-                    <Link to='addcategory' >
+                    <Link to='/addcategory' >
                         <button type="button" className="btn btn-success rounded-0">
                             + New Category </button></Link>
                 </div>
