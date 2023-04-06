@@ -13,6 +13,7 @@ import OrderDetails from './pages/OrderDetails/OrderDetails';
 import Sidebar from './components/Sidebar/Sidebar';
 import CustomerList from './pages/CustomerList/CustomerList'
 import Customer from './pages/Customer/Customer'
+import Home from './pages/Home/Home';
 
 
 
@@ -21,7 +22,7 @@ function App() {
     <section>
 
        <Routes>
-        <Route path='/' element={<Categories />} />
+        <Route path='/' element={<Home/>} />
         <Route path='/categories' element={<Categories />} />
         <Route path='/addcategory' element={<AddCategory />} />
         <Route path='/addcategory/:id' element={<AddCategory />} />
