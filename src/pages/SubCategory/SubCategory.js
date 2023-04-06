@@ -72,7 +72,7 @@ const SubCategory = () => {
                             return <tr key={subCat.id} className="">
 
                                 <td className="ps-sm-3" >{subCat.name}</td>
-                                <td className="ps-sm-3" >{getNameOfCategory(subCat.catid)}</td>
+                                <td className="ps-sm-3" >{subCat.category.catname}</td>
                                 <td > <Link to={`/addSubCategory/${subCat.id}`}>
                                     <i className="bi bi-pencil-square mx-sm-2 fs-4 text-warning"></i>
                                 </Link>
