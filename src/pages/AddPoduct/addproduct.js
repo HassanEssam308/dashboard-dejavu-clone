@@ -1,7 +1,7 @@
-import { addDoc, doc, updateDoc,collection,setDoc } from 'firebase/firestore';
+import { addDoc, doc, updateDoc, collection, setDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link,useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { db } from '../../config/firestore_config';
 import changeCategories from '../../store/Actions/categoriesAction';
 import ProductsList from '../../store/Actions/ProductsList';
@@ -13,127 +13,209 @@ const AddProduct = () => {
     const productslist = useSelector((state) => state.products.products);
     const dispatch = useDispatch();
     const { id } = useParams();
-    const mpcolor = new Map();
-    const[color,setcolor]=useState({});
-    const [product,setproduc]=useState({
-        catid:'',
-        subid:'',
-        name:'',
-        new_price:'',
-        old_price:'',
+    const mpcolor = new Array();
+    const mpsize = new Array();
+    const imgs = new Array();
+   
+    const [imglist, setimglist] = useState([{ servises: "" }]);
+    const [detaillist, setdetaillist] = useState([{ servises: "" }]);
+    const [color, setcolor] = useState([{ servises: "" }]);
+    const [colorname,setcolorname]=useState({});
+    const [colorqunt,setcolorqun]=useState({});
+    const [sizee, setsizee] = useState([{ servises: "" }]);
+    const [sizename,setsizename]=useState({});
+    const [sizequnt,setsizequnt]=useState({});
+    const[title,settitle]=useState('Add More');
+    const [product, setproduc] = useState({
+        catid: '',
+        subid: '',
+        name: '',
+        new_price: '',
+        old_price: '',
         size:{},
-        offer:'',
-        imgs:[],
-        discount:'',
-        details:[],
-        colors:{}
+        offer: '',
+        imgs: new Array(),
+        discount: '',
+        details: new Array(),
+        colors: {}
     })
-    const [producterr,setproducerr]=useState({
-        catiderr:'',
-        subiderr:'',
+    const [producterr, setproducerr] = useState({
+        catiderr: '',
+        subiderr: '',
     })
-    useEffect(()=>{
-        if(id){
-       const prd=productslist.find(prd => prd.id == id);
-        console.log(prd);
-        setcolor(prd.colors);
-        console.log(color);
-        setproduc({...prd});
-        }
-    },[])
- 
+    useEffect(() => {
+          if(id){
+            settitle('Show More')
+        const prd=productslist.find(prd => prd.id == id);
+         console.log(prd);
+         
+         setproduc({...prd});
+         
+         } 
+    }, [])
+
     //console.log(id);
-    const handleform=(ev)=>{
-     //  console.log(ev.target.value);
-        setproduc({ ...product, [ev.target.name]: ev.target.value });
-        switch(ev.target.name){
+    const handleform = (ev) => {
+        //  console.log(ev.target.value);
+        /* setproduc({ ...product, [ev.target.name]: ev.target.value }); */
+        switch (ev.target.name) {
             case 'catid':
-            setproducerr({...producterr,catiderr:((ev.target.value!='vBEYRuSj9Us4ZPPUbg13')&&(ev.target.value!='cgCpnqSfoejbeTYqAxQE'))?"Invalid ID":""})
-            //console.log(producterr.catiderr);
-            //console.log(ev.target.value);
-          //  setproduc({...product,catid:ev.target.value});
-            break;
-            case'subid':
-            setproducerr({...producterr,subiderr:((ev.target.value!='HNfgWKICjVLXdZnInCK6')&&(ev.target.value!='J57FdZwBd0h0PbLsxpyd')&&(ev.target.value!='Mp7jz79bKhJXW0TsHjw8')&&(ev.target.value!='NhVZroZEavmDMtOoQvdx')&&(ev.target.value!='rd6s5oYcILE2fIPKvzuM'))?"Invalid SubID":""})
-              console.log(ev.target.value);
-            setproduc({...product,subid:ev.target.value});
-            break;
-            case'name':
-            setproduc({...product,name:ev.target.value});
-            break;
-            case'new_price':
-            setproduc({...product,new_price:ev.target.value});
-            break;
-            case'old_price':
-            setproduc({...product,old_price:ev.target.value});
-            break;
-            case'offer':
-            setproduc({...product,offer:ev.target.value});
-            break;
-            case'imgs':
-            setproduc({...product,imgs:[product.imgs[0], ev.target.value]});
-            break;
-            case'discount':
-            setproduc({...product,discount:ev.target.value});
-            break;
-            case'details':
-            setproduc({...product,details:[product.details[0],ev.target.value]});
-            break;
-            case'colors':
-            setproduc({...product,colors:[product.colors[0],ev.target.value]});
-            break;
-            case'size':
-            setproduc({...product,size:[product.size[0],ev.target.value]});
-            break;
+                setproducerr({ ...producterr, catiderr: ((ev.target.value != 'vBEYRuSj9Us4ZPPUbg13') && (ev.target.value != 'cgCpnqSfoejbeTYqAxQE')) ? "Invalid ID" : "" })
+                //console.log(producterr.catiderr);
+
+                setproduc({ ...product, catid: ev.target.value });
+                break;
+            case 'subid':
+                setproducerr({ ...producterr, subiderr: ((ev.target.value != 'HNfgWKICjVLXdZnInCK6') && (ev.target.value != 'J57FdZwBd0h0PbLsxpyd') && (ev.target.value != 'Mp7jz79bKhJXW0TsHjw8') && (ev.target.value != 'NhVZroZEavmDMtOoQvdx') && (ev.target.value != 'rd6s5oYcILE2fIPKvzuM')) ? "Invalid SubID" : "" })
+                console.log(ev.target.value);
+                setproduc({ ...product, subid: ev.target.value });
+                break;
+            case 'name':
+                setproduc({ ...product, name: ev.target.value });
+                break;
+            case 'new_price':
+                setproduc({ ...product, new_price: Number(ev.target.value) });
+                break;
+            case 'old_price':
+                setproduc({ ...product, old_price: Number(ev.target.value) });
+                break;
+            case 'offer':
+                setproduc({ ...product, offer: ev.target.checked });
+                console.log(ev);
+                console.log(ev.target.checked);
+                break;
+            case 'imgs':
+                //  setproduc({ ...product, imgs: ([...imgs,ev.target.value] )});
+                console.log(ev.target.value);
+                break;
+            case 'discount':
+                setproduc({ ...product, discount: Number(ev.target.value) });
+                break;
+            case 'details':
+                //  setproduc({ ...product, details: [ev.target.value] });
+                console.log(ev.target.value);
+                break;
+            case 'size':
+                setproduc({ ...product, size: [ev.target.value] });
+                break;
+
+
         }
-       // console.log(product);
+        // console.log(product);
 
     }
-    const upadteproduct=  ()=>{
-    if(id){
-        const docRef = doc(db, "product", id);
-        if( window.confirm("Entire Document Will updated")){
-        updateDoc(docRef,product).then(()=>{
-            dispatch(ProductsList());
-            console.log("Entire Document has been updated successfully.")
-        }).catch((error)=>{
-            console.log(error);
-        })
-      }
-    }else{
-        const docRef = collection(db, "product");
-        if( window.confirm("Entire Document Will Added")){
-            addDoc(docRef,product).then((docRef)=>{
-                dispatch(ProductsList());
-                console.log(`Entire Document has been Added successfully.${docRef}`)
-            }).catch((err)=>{
-                console.log(err);
-            })
+    const upadteproduct = () => {
+        if (id) {
+            const docRef = doc(db, "product", id);
+            if (window.confirm("Entire Document Will updated")) {
+                updateDoc(docRef, product).then(() => {
+                  //  dispatch(ProductsList());
+                  console.log(product);
+                    console.log("Entire Document has been updated successfully.")
+                }).catch((error) => {
+                    console.log(error);
+                })
+            }
+        } else {
+            if (window.confirm("Entire docuemt will added")) {
+                const docRef = collection(db, "test");
+                addDoc(docRef, product).then((docRef) => {
+                    console.log(`Entire Document .${docRef}`)
+                }).catch((err) => {
+                    console.log(err);
+                })
+
+            }
+
+        }
+
 
 
     }
-    }}
+
 
     const [Imgg, SetImg] = useState([])
     const [Imge, SetImge] = useState('')
     const Img = (ev) => {
+
         console.log(ev.target.value);
         SetImge(ev.target.value);
         console.log(Imge);
     }
-    const Add=()=>{
-        if(Imge!=''){
-           SetImg([...Imgg, Imge]);
-           //console.log(Imgg);
-         //product.imgs.push(Imge);
-    
+    const Add = () => {
+        const inp = [...imglist, []];
+        setimglist(inp);
+        if (Imge != '') {
+            product.imgs.push(Imge);
         }
-      // console.log(product.imgs);
+        if (Imge != '') {
+
+            SetImg([...Imgg, Imge]);
+            console.log(Imgg);
+
+            //console.log(Imgg);
+            // product.imgs.push(Imge);
+
+        }
+        console.log(product.imgs);
     }
-    for(let i in product.colors){
-        mpcolor.set(i,product.colors[i]);
-        console.log(mpcolor);
+
+    const [Detail, Setdetail] = useState('')
+    const detaill = (ev) => {
+
+        console.log(ev.target.value);
+        Setdetail(ev.target.value);
+        console.log(Detail);
     }
+    const Adddetail = () => {
+        const inp1 = [...detaillist, []];
+        setdetaillist(inp1);
+        product.details.push(Detail);
+        if (Detail != '') {
+            
+        }
+
+        console.log(product.details);
+    }
+
+    const colornam=(ev)=>{
+        console.log(ev.target.value);
+        setcolorname(ev.target.value);
+    }
+    const colorquntity=(ev)=>{
+        console.log(ev.target.value);
+        setcolorqun(ev.target.value);
+    }
+    const Addcolor=()=>{
+        const inp1 = [...color, []];
+        setcolor(inp1);   
+        if (colorname!= ''&&colorqunt!='') {
+            
+            product.colors[colorname.toUpperCase()]=Number(colorqunt);
+           
+            
+        }
+    }
+    const sizernam=(ev)=>{
+        console.log(ev.target.value);
+        setsizename(ev.target.value);
+    }
+    const sizequntity=(ev)=>{
+        console.log(ev.target.value);
+        setsizequnt(ev.target.value);
+    }
+    const Addsize=()=>{
+        const inp1 = [...sizee, []];
+        setsizee(inp1);   
+        if (sizename!= ''&&sizequnt!='') {
+            product.size[sizename.toUpperCase()]=Number(sizequnt);
+           
+            
+        }
+    }
+
+
+    
 
 
     return (
@@ -148,104 +230,223 @@ const AddProduct = () => {
                     <h3 className="col-md-9 ">  Add Product</h3>
                     <div className='col-md-3'>
                         <Link to='/products' >
-                        <button type="button" className="btn btn-warning rounded-0 ps-5 pe-5">Back </button></Link>
+                            <button type="button" className="btn btn-warning rounded-0 ps-5 pe-5">Back </button></Link>
                     </div>
                 </div>
                 <form>
-                <div className="container-fluid" style={{width: '70%'}}>
-                    <div className="form-group row">
-                        <label htmlFor="catid" className="col-sm-2 col-form-label">CategoryId</label>
-                        <div className="col-sm-10">
-                            <input name='catid' type="text" className="form-control" id="ID" placeholder="CategoryID" onChange={(e) => handleform(e)} value={product.catid} />
-                            <p className="text-danger">{producterr.catiderr}</p>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="form-group row">
-                        <label htmlFor="SubCategoryId" className="col-sm-2 col-form-label" >SubCategoryId</label>
-                        <div className="col-sm-10">
-                            <input name='subid' type="text" className="form-control" id="SubCategoryId" placeholder="SubCategoryId"onChange={(e) => handleform(e)} value={product.subid} />
-                            <p className="text-danger">{producterr.subiderr}</p>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="form-group row">
-                        <label htmlFor="name" className="col-sm-2 col-form-label">ProductName</label>
-                        <div className="col-sm-10">
-                            <input name='name' type="text" className="form-control" id="name" placeholder="ProductName" onChange={(e) => handleform(e)} value={product.name}/>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="form-group row">
-                        <label htmlFor="new_price" className="col-sm-2 col-form-label">New_Price</label>
-                        <div className="col-sm-10">
-                            <input name='new_price' type="number" className="form-control" id="new_price" placeholder="NewPrice" onChange={(e) => handleform(e)} value={product.new_price}/>
-                        </div>
-                    </div>
-                    <br/>
-                    <div className="form-group row">
-                        <label htmlFor="old_price" className="col-sm-2 col-form-label">Old_Price</label>
-                        <div className="col-sm-10">
-                            <input name='old_price' type="number" className="form-control" id="old_price" placeholder="old_price" onChange={(e) => handleform(e)} value={product.old_price}/>
-                        </div>
-                    </div>
-                    <br />
 
-                    <div className="form-group row">
-                        <label htmlFor="offer" className="col-sm-2 col-form-label">Offer</label>
-                        <div className="col-sm-10">
-                            <input name='offer' type="boolen" className="form-control" id="offer" placeholder="offer" onChange={(e) => handleform(e)} value={product.offer}/>
+
+
+                    <div className="container-fluid" style={{ width: '70%' }}>
+
+                        <div className="form-group row mb-3">
+                            <label htmlFor="catid" className="form-label">Select Category</label>
+                            <select className="form-control" name="catid" id="catid" onChange={(e) => handleform(e)}  >
+                                <option name='catid' value={'cgCpnqSfoejbeTYqAxQE'}   >Shoes</option>
+                                <option name='catid' value={'vBEYRuSj9Us4ZPPUbg13'}   >Bags</option>
+
+
+                            </select>
                         </div>
-                    </div>
-                    <br />
-                    <div className="form-group row">
+
+                        <br />
+
+                        <div className="form-group row mb-3">
+                            <label htmlFor="subid" className="col-sm-3 col-form-label ">Select SubCategory</label>
+                            <select className="form-control" name="subid" id="subid" onChange={(e) => handleform(e)}  >
+                                <option name='subid' value={'HNfgWKICjVLXdZnInCK6'}   >Handbags</option>
+                                <option name='subid' value={'Mp7jz79bKhJXW0TsHjw8'}   >Shoulder Bags</option>
+                                <option name='subid' value={'NhVZroZEavmDMtOoQvdx'}   >High Boots</option>
+                                <option name='subid' value={'J57FdZwBd0h0PbLsxpyd'}   >Half Boots</option>
+                                <option name='subid' value={'rd6s5oYcILE2fIPKvzuM'}   >Ankle Boots</option>
+
+
+                            </select>
+                        </div>
+                        {/*  <div className="form-group row">
+                            <label htmlFor="SubCategoryId" className="col-sm-2 col-form-label" >SubCategoryId</label>
+                            <div className="col-sm-10">
+                                <input name='subid' type="text" className="form-control" id="SubCategoryId" placeholder="SubCategoryId"
+                                    onChange={(e) => handleform(e)} value={product.subid} />
+                                <p className="text-danger">{producterr.subiderr}</p>
+                            </div>
+                        </div> */}
+                        <br />
+                        <div className="form-group coulmn">
+                            <label htmlFor="name" className="col-sm-2 col-form-label">Product Name</label>
+                            <div className="col-sm-10">
+                                <input name='name' type="text" className="form-control" id="name" placeholder="ProductName"
+                                    onChange={(e) => handleform(e)} value={product.name} />
+                            </div>
+                        </div>
+                        <br />
+                        <div className="form-group coulmn">
+                            <label htmlFor="new_price" className="col-sm-2 col-form-label">New_Price</label>
+                            <div className="col-sm-10">
+                                <input name='new_price' type="text" className="form-control" id="new_price" placeholder="NewPrice"
+                                    onChange={(e) => handleform(e)} value={product.new_price} />
+                            </div>
+                        </div>
+                        <br />
+                        <div className="form-group coulmn">
+                            <label htmlFor="old_price" className="col-sm-2 col-form-label">Old_Price</label>
+                            <div className="col-sm-10">
+                                <input name='old_price' type="text" className="form-control" id="old_price" placeholder="old_price"
+                                    onChange={(e) => handleform(e)} value={product.old_price} />
+                            </div>
+                        </div>
+                        <br />
+
+                        <div className="form-group coulmn">
+                            <label htmlFor="discount" className="col-sm-2 col-form-label">Dicount</label>
+                            <div className="col-sm-10">
+                                <input name='discount' type="text" className="form-control" id="discount" placeholder="discount"
+                                    onChange={(e) => handleform(e)} value={product.discount} />
+                            </div>
+                        </div>
+                        <br />
+                        <div className="form-group form-check">
+                            <label className="form-check-label" htmlFor="offer">Offer</label>
+                            <input name='offer' type="checkbox" className="form-check-input" id="offer"
+                                onChange={(e) => handleform(e)} value={product.offer} />
+                        </div>
+
+                        {/*   <div className="form-group row">
                         <label htmlFor="discount" className="col-sm-2 col-form-label">Discount</label>
-                        <div className="col-sm-10">
-                            <input name=' discount' type="text" className="form-control" id="discount" placeholder="discount" onChange={(e) => handleform(e)} value={product.discount}/>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="form-group row">
-                        <label htmlFor="details" className="col-sm-2 col-form-label">Details</label>
-                        <div className="col-sm-10">
-                            <input name='details' type="text" className="form-control" id="details" placeholder="Details" onChange={(e) => handleform(e)} value={product.details[0]}/>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="form-group row">
-                        <label htmlFor="imgs" className="col-sm-2 col-form-label">Imge</label>
-                        <div className="col-sm-10">
-                            <input name='imgs' type='text' className="form-control" id="imgs" placeholder="image" onMouseLeave={(ev) => Img(ev)} value={product.imgs[0]}/>      
-                          <button type="button" style={{backgroundColor:'#d7c9a0'}} className="btn btn text-primary-emphasis mt-1 rounded-0  " onClick={Add} >AddImge</button>
-                     
-                        </div>
-                    </div>
-                    <br />
-                    
-                    
-                    <div className="form-group row">
+                       
+                            <input name=' discount' type="checkbox" className="form-control" id="discount" placeholder="discount" onChange={(e) => handleform(e)} value={product.discount}/>
+                        
+                    </div> */}
+                        <br />
+                        {detaillist.map((singldetal, index) => {
+                            return (
+                                <div key={index} className="form-group coulmn">
+                                    <label htmlFor="details" className="col-sm-2 col-form-label">details No {index + 1}</label>
+                                    <div className="col-sm-10">
+                                        <input name='details' type='text' className="form-control" id="details" placeholder="details" onMouseLeave={(ev) => (detaill(ev))} value={product.details[index]} />
+                                        {/* <input name='imgs' type='text' className="form-control" id="imgs" placeholder="image"
+                                        onChange={(e) => handleform(e)}
+                                        value={product.imgs[0]} /> */}
+
+                                        {detaillist.length - 1 === index && <button type="button" style={{ backgroundColor: '#d7c9a0' }} className="btn btn text-primary-emphasis mt-1 rounded-0  " onClick={Adddetail} >{title}</button>}
+
+
+                                    </div>
+                                </div>
+                            );
+
+
+
+                        })}
+
+                        <br />
+
+                        {imglist.map((singleimg, index) => {
+                            return (
+                                <div key={index} className="form-group coulmn">
+                                    <label htmlFor="imgs" className="col-sm-2 col-form-label">Imge No {index + 1}</label>
+                                    <div className="col-sm-10">
+                                        <input name='imgs' type='text' className="form-control" id="imgs" placeholder="image" onMouseLeave={(ev) => (Img(ev))} value={product.imgs[index]}/>
+                                        {/* <input name='imgs' type='text' className="form-control" id="imgs" placeholder="image"
+                                        onChange={(e) => handleform(e)}
+                                        value={product.imgs[0]} /> */}
+
+                                        {imglist.length - 1 === index && <button type="button" style={{ backgroundColor: '#d7c9a0' }} className="btn btn text-primary-emphasis mt-1 rounded-0  " onClick={Add} >{title}</button>}
+
+
+                                    </div>
+                                </div>
+                            );
+
+
+
+                        })}
+
+                        <br />
+
+                        {color.map((singleimg, index) => {
+                            return (
+                                <div key={index} className="form-group coulmn">
+                                <label htmlFor="colors" className="col-sm-2 col-form-label">color No {index + 1}</label>
+                                <div className="col-sm-4">
+                                    <input name='colors' type='text' className="form-control" id="colorsname" placeholder="colorsname" onMouseLeave={(ev) => (colornam(ev))}  />
+                                    <br></br>
+                                    <input name='colorsqun' type='text' className="form-control" id="colorsqun" placeholder="colorsquntity" onMouseLeave={(ev) => (colorquntity(ev))}  />
+                                 
+
+                                    {color.length - 1 === index && <button type="button" style={{ backgroundColor: '#d7c9a0' }} className="btn btn text-primary-emphasis mt-1 rounded-0  " onClick={Addcolor} >{title}</button>}
+
+
+                                </div>
+                            </div>
+                            );
+
+
+
+                        })}
+
+
+
+                        {/*  <div className="form-group row">
                         <label htmlFor="colors" className="col-sm-2 col-form-label" >Color</label>
                         <div className="col-sm-10">
-                        <input name='colors' type="text" className="form-control" id="colors" placeholder="color" onChange={(e) => handleform(e)} value={product.colors.value}/>
+                        <input name='colors' type="text" className="form-control" id="colors" placeholder="color" 
+                        onChange={(e) => handleform(e)} value={color.set(event.target.v)}/>
                         <div className='text-end'>
                         <button type="button" style={{backgroundColor:'#d7c9a0'}} className="btn btn text-primary-emphasis mt-1 rounded-0 text-end " >AddColor</button>
                         </div>
                            
                         </div>
                     </div>
-                   
-                    <br />
-                   
+                    */}
+                        <br />
+
+
+                        {sizee.map((singleimg, index) => {
+                            return (
+                                <div key={index} className="form-group coulmn">
+                                <label htmlFor="size" className="col-sm-2 col-form-label">size No {index + 1}</label>
+                                <div className="col-sm-4">
+                                    <input name='size' type='text' className="form-control" id="colorsname" placeholder="sizename" onMouseLeave={(ev) => (sizernam(ev))} />
+                                    <br></br>
+                                    <input name='size' type='text' className="form-control" id="sizequn" placeholder="sizequntity" onMouseLeave={(ev) => (sizequntity(ev))} />
+                                 
+
+                                    {sizee.length - 1 === index && <button type="button" style={{ backgroundColor: '#d7c9a0' }} className="btn btn text-primary-emphasis mt-1 rounded-0  " onClick={Addsize} >{title}</button>}
+
+
+                                </div>
+                            </div>
+                            );
+
+
+
+                        })}
+
+
+
+                        {/* <div className="form-group row">
+                        <label htmlFor="size" className="col-sm-2 col-form-label" >Size</label>
+                        <div className="col-sm-10">
+                        <input name='size' type="text" className="form-control" id="size" placeholder="size" onChange={(e) => handleform(e)} value={mpsize[0]}/>
+                        <div className='text-end'>
+                      <button type="button" style={{backgroundColor:'#d7c9a0'}} className="btn btn text-primary-emphasis mt-1 rounded-0 text-end " >AddColor</button>
+                        </div>
+                           
+                        </div>
+                    </div> */}
+                        <br></br>
+
                     </div>
                     <div className='text-end '>
-                    <button type="button" style={{backgroundColor:'#5a5955'}} className="btn btn text-primary-emphasis me-5 rounded-0" onClick={upadteproduct}>Add</button>
+                        <button type="button" style={{ backgroundColor: '#5a5955' }} className="btn btn text-primary-emphasis me-5 rounded-0" onClick={upadteproduct}>Add</button>
                     </div>
 
-             </form>
-                </div>
-        
-            </>
-            )
+                </form>
+            </div>
+
+        </>
+    )
 
 }
-            export default AddProduct;
+export default AddProduct;
