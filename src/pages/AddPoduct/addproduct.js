@@ -117,7 +117,6 @@ const AddProduct = () => {
                 })
             }
         } else {
-
             if (window.confirm("Entire docuemt will added")) {
                 const docRef = collection(db, "test");
                 addDoc(docRef, product).then((docRef) => {
