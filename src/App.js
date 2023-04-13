@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Routes, Route } from 'react-router-dom'
 import Categories from './pages/Categories/Categories';
@@ -10,10 +10,10 @@ import AddProduct from './pages/AddPoduct/addproduct';
 import Products1 from './pages/Products/product';
 import OrdersList from './pages/OrdersList/OrdersList';
 import OrderDetails from './pages/OrderDetails/OrderDetails';
-import Sidebar from './components/Sidebar/Sidebar';
 import CustomerList from './pages/CustomerList/CustomerList'
 import Customer from './pages/Customer/Customer'
 import Home from './pages/Home/Home';
+import NotFound from './pages/NotFound/NotFound';
 
 
 
@@ -36,6 +36,7 @@ function App() {
         <Route path='/orderDetails' element={<OrderDetails />} />  
         <Route path='/customers' element={<CustomerList />} />  
         <Route path='/customer' element={<Customer />} />  
+        <Route path='*' element={<NotFound />} />  
 
       </Routes> 
 

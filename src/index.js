@@ -16,11 +16,11 @@ root.render(
       <Provider store={store} >
       
           <main className='d-flex ' >
-            <aside className='col-3  col-md-2 ' >
+            <aside className='col-4  col-md-3   col-lg-2   ' >
             <Sidebar />
             </aside>
 
-            <aside  className='col-9  mx-auto   ' >
+            <aside  className='col  mx-auto   ' >
                  <App />
             </aside>
          
