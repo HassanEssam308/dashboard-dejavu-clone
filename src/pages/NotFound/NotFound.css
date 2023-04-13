@@ -1,0 +1,75 @@
+
+.error-container {
+  text-align: center;
+  font-size:10vw;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 800;
+  margin: 20px 15px;
+}
+.error-container > span {
+  display: inline-block;
+  line-height: 0.7;
+  color: #FFB485;
+}
+.error-container > span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.error-container > span:nth-of-type(1) {
+  color: #D1F2A5;
+  animation: colordancing 4s infinite;
+}
+.error-container > span:nth-of-type(2) {
+    animation: colordancing2 4s infinite;
+  }
+.error-container > span:nth-of-type(3) {
+  color: #F56991;
+  animation: colordancing 4s infinite;
+}
+
+
+/*  */
+@keyframes colordancing {
+  0% {
+    color: #D1F2A5;
+  }
+  25% {
+    color: #F56991;
+  }
+  50% {
+    color: #FFC48C;
+  }
+  75% {
+    color: #EFFAB4;
+  }
+  100% {
+    color: #D1F2A5;
+  }
+}
+@keyframes colordancing2 {
+  0% {
+    color: #FFC48C;
+  }
+  25% {
+    color: #EFFAB4;
+  }
+  50% {
+    color: #D1F2A5;
+  }
+  75% {
+    color: #F56991;
+  }
+  100% {
+    color: #FFC48C;
+  }
+}
+
+.zoom-area { 
+  margin: 30px auto 30px;
+  font-size:5vw;
+  color:#f00749;
+  text-align: center;
+}
+.link-container {
+  text-align: center;
+}
