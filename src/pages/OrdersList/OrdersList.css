@@ -52,15 +52,6 @@
     width: 5rem;
 }
 
-.button
-{
-    font-size: 0.9rem;
-    font-weight: 600;
-    background-color: rgb(255, 217, 0);
-    border: 0;
-    padding: 0.4rem 0.8rem;
-}
-
 .last-record
 {
     margin-left: 2rem;

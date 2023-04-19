@@ -1,39 +1,63 @@
 import './OrderDetails.css'
+import { Link } from "react-router-dom"
+import { db } from '../../config/firestore_config';
+import { doc, getDoc  } from "firebase/firestore";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function OrderDetails()
 {
+    let OrderID = useParams();
+    const [orderDetails , setorderDetails] = useState({});
+
+    const fetchSingleOrder = async () => 
+    { 
+        const singleData = await getDoc(doc(db, "Orders", OrderID.id)) 
+        if (singleData.exists()) 
+        {
+            setorderDetails(singleData.data());
+        } 
+        else 
+        {
+        console.log("No such document!");
+        }   
+    }
+
+    useEffect(() => 
+    {
+        fetchSingleOrder();
+    } , [] );
+
     return (<>
         <div className='container-fluid bg-light'>
-            <section className='row'>
-                    <div className='col m-4'>
+                <div className='row'>
+                    <div className='col-10 p-4'>
                         <div>
-                            <a href='#' className='dashboard'>Dashboard</a>
+                            <a href='/' className='dashboard'>Dashboard</a>
                             <span className='text'>/</span>
                             <span className='text mx-2'>Orders</span>
                             <span className='text'>/</span>
-                            <span className='text mx-2'>Order #7789</span>
+                            <span className='text mx-2'>Order #{OrderID.id}</span>
                         </div>
                         <div className=''>
                             <h3 className='d-inline me-2'>Orders</h3>
-                            <h3 className='d-inline'>#7789</h3>    
+                            <h3 className='d-inline'>#{OrderID.id}</h3>    
                         </div>
                     </div>
-                    <div className='col-2 mt-5'>
-                    <button type="button" className="button1 me-2">Delete</button>
-                    <button type="button" className="button2">Edit</button>
+                    <div className='col pt-5'>
+                    <Link to='/ordersList' >
+                        <button type="button" className="btn btn-warning rounded-0 px-5"> Back </button></Link>
                     </div>
-                </section>
+                </div>
                 <hr className='mx-4 me-5'/>
                 <div>
-                    <span className='mx-3 ms-5 text1'>October 7, 2020 at 9:08 pm</span>
+                    <span className='mx-3 ms-5 text1'>{orderDetails.date}</span>
                     <span className='text-secondary'>|</span>
-                    <span className='mx-3 text1'>6 items</span>
+                    <span className='mx-3 text1'>{orderDetails.count} items</span>
                     <span className='text-secondary'>|</span>
-                    <span className='mx-3 text1'>Total $5,882.00</span>
+                    <span className='mx-3 text1'>Total LE {Number(orderDetails.count)*Number(orderDetails.price)}.00</span>
                     <span className='text-secondary'>|</span>
-                    <span className='mx-3 text1 bg1'>Paid</span>
-                    <span className='text-secondary'>|</span>
-                    <span className='mx-3 text1 bg2'>yes</span>
+                    <span className='mx-3 text1 bg1'>{orderDetails.paid}</span>
                 </div>
                 <hr className='mx-4 me-5'/>
                 <section>
@@ -42,39 +66,21 @@ export default function OrderDetails()
                 <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col"><h2>Items</h2></th>
+                        <th scope="col"><h2>Product</h2></th>
                         <th scope="col"></th>
                         <th scope='col'></th>
-                        <th scope="col"><a href='#' className='recordItem'>Edit items</a></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>
-                            <img src='https://cdn.shopify.com/s/files/1/0499/3079/7217/products/GPS-DVTH-031-D.BROWN_1_360x.jpg?v=1671126270' alt='' width={70}/>
-                            <span className='ms-2'>XKK-DVTH-003</span>
+                            <img src={orderDetails.img} alt='' width={70}/>
+                            <span className='ms-2'>{orderDetails.productName}</span>
                         </td>
-                        <td> <p>$849.00</p> </td>
-                        <td> <p>1</p> </td>
-                        <td> <p>$849.00</p> </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src='https://cdn.shopify.com/s/files/1/0499/3079/7217/products/LID-DJTT-054-M.DENIM_2_1024x.jpg?v=1678803759' alt='' width={70}/>
-                            <span className='ms-2'>LID-DJTT-054</span>
-                        </td>
-                        <td> <p>$699.00</p> </td>
-                        <td> <p>2</p> </td>
-                        <td> <p>$1,398.00</p> </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src='https://cdn.shopify.com/s/files/1/0499/3079/7217/products/RUI-DJTT-001-GOLD_2_1024x.jpg?v=1666519135' alt='' width={70}/>
-                            <span className='ms-2'>RUI-DJTT-001</span>
-                        </td>
-                        <td> <p>$1,210.00</p> </td>
-                        <td> <p>3</p> </td>
-                        <td> <p>$3,630.00</p> </td>
+                        <td> <p>LE {orderDetails.price}.00</p> </td>
+                        <td> <p>{orderDetails.count}</p> </td>
+                        <td> <p>LE {Number(orderDetails.count)*Number(orderDetails.price)}.00</p> </td>
                     </tr>
                     <tr>
                         <td>
@@ -86,9 +92,9 @@ export default function OrderDetails()
                         <td></td>
                         <td></td>
                         <td>
-                            <p>$5,877.00</p>
-                            <p>$-20.00</p>
-                            <p>$25.00</p>
+                            <p>LE {Number(orderDetails.count)*Number(orderDetails.price)}.00</p>
+                            <p>LE -20.00</p>
+                            <p>LE 25.00</p>
                         </td>
                     </tr>
                     <tr>
@@ -98,54 +104,7 @@ export default function OrderDetails()
                         <td></td>
                         <td></td>
                         <td>
-                            <p>$5,882.00</p>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
-                </div>
-            <div className="table-responsive mx-4 mb-5 bg-white p-2 shadow">
-                <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col"><h2>Transactions</h2></th>
-                        <th scope="col"></th>
-                        <td><a href='#' className='record'>Add transaction</a></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>  
-                        <p>Payment</p>
-                        <p className='text-secondary'>via PayPal</p>
-                        </td>
-                        <td>
-                        <p>October 7, 2020</p>
-                        </td>
-                        <td>
-                        <p>$2,000.00</p>
-                        </td>
-                    </tr>
-                    <tr> <td>  
-                        <p>Payment</p>
-                        <p className='text-secondary'>from account balance</p>
-                        </td>
-                        <td>
-                        <p>November 2, 2020</p>
-                        </td>
-                        <td>
-                        <p>$50.00</p>
-                        </td></tr>
-                    <tr>
-                    <td>  
-                        <p>Refund</p>
-                        <p className='text-secondary'>to PayPal</p>
-                        </td>
-                        <td>
-                        <p>December 10, 2020</p>
-                        </td>
-                        <td>
-                        <p className='text-danger'>$-325.00</p>
+                            <p>LE {orderDetails.balanceOrder}.00</p>
                         </td>
                     </tr>
                 </tbody>
@@ -166,8 +125,8 @@ export default function OrderDetails()
                         <p>Return Total</p>
                         </td>
                         <td>
-                        <p>$5,882.00</p>
-                        <p>$0.00</p>
+                        <p>LE {orderDetails.balanceOrder}.00</p>
+                        <p>LE 0.00</p>
                         </td>
                     </tr>
                     <tr> <td>  
@@ -175,8 +134,8 @@ export default function OrderDetails()
                         <p>Refunded</p>
                         </td>
                         <td>
-                        <p>$-80.00</p>
-                        <p>$0.00</p>
+                        <p>LE -80.00</p>
+                        <p>LE 0.00</p>
                         </td>
                         </tr>
                     <tr>
@@ -184,7 +143,7 @@ export default function OrderDetails()
                         <p>Balance <span>(customer owes you)</span></p>
                         </td>
                         <td>
-                        <p>$5,802.00</p>
+                        <p>LE {Number(orderDetails.balanceOrder) - 80}.00</p>
                         </td>
                     </tr>
                 </tbody>
