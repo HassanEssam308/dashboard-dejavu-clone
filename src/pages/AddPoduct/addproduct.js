@@ -480,6 +480,7 @@ const AddProduct = () => {
 
 
 
+
                                     </div>
                                 </div>
                             );
