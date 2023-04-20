@@ -477,10 +477,6 @@ const AddProduct = () => {
                                         <br></br>
                                         <input name='colorsqun_ar' type='text' className="form-control" id="colorsqun_ar" placeholder="colorsquntity_ar" onMouseLeave={(ev) => (colorquntity_ar(ev))} value={product.colors_ar[key]} />
 
-
-
-
-
                                     </div>
                                 </div>
                             );
