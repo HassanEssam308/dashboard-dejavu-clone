@@ -127,7 +127,7 @@ const AddProduct = () => {
     }
     const upadteproduct = () => {
         if (id) {
-            const docRef = doc(db, "test", id);
+            const docRef = doc(db, "product", id);
             if (window.confirm("Entire Document Will updated")) {
                 updateDoc(docRef, product).then(() => {
                     //  dispatch(ProductsList());
@@ -139,7 +139,7 @@ const AddProduct = () => {
             }
         } else {
             if (window.confirm("Entire docuemt will added")) {
-                const docRef = collection(db, "test");
+                const docRef = collection(db, "product");
                 addDoc(docRef, product).then((docRef) => {
                     console.log(`Entire Document .${docRef}`)
                 }).catch((err) => {
