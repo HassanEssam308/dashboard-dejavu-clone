@@ -86,15 +86,24 @@ const Sidebar = () => {
             </li>
           </ul>
         </li>
-
+        
         <li className=" my-sm-2">
-          <Link className="  text-decoration-none text-white px-0 align-middle my-sm-3">
+          <span role="button" href="#submenu4" data-bs-toggle="collapse" className=" my-sm-3 px-0 align-middle">
+          <i className="bi bi-table me-sm-1"></i>
+            <span className="ms-1 d-none d-sm-inline">Orders</span> </span>
 
-            <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
-              to="/ordersList"  >
-              <i className="bi bi-table me-sm-2"></i>
-              Orders List  </NavLink>
-          </Link>
+          <ul className="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+
+            <li>
+
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+                to="/ordersList"> Order List</NavLink>
+            </li>
+            <li>
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+                to="/AddOrder"  > Add Order</NavLink>
+            </li>
+          </ul>
         </li>
 
         <li>

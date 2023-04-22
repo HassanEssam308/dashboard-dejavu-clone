@@ -14,6 +14,7 @@ import CustomerList from './pages/CustomerList/CustomerList'
 import Customer from './pages/Customer/Customer'
 import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
+import AddOrder from './pages/AddOrder/AddOrder';
 
 
 
@@ -21,7 +22,7 @@ function App() {
   return (
     <section>
 
-       <Routes>
+      <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/categories' element={<Categories />} />
         <Route path='/addcategory' element={<AddCategory />} />
@@ -33,7 +34,8 @@ function App() {
         <Route path='/addproduct/:id' element={<AddProduct/>}/>  
         <Route path='/addproduct' element={<AddProduct/>}/>
         <Route path='/ordersList' element={<OrdersList />} />
-        <Route path='/orderDetails' element={<OrderDetails />} />  
+        <Route path='/AddOrder' element={<AddOrder/>}/>
+        <Route path='/Orders/:id' element={<OrderDetails />} />  
         <Route path='/customers' element={<CustomerList />} />  
         <Route path='/customer' element={<Customer />} />  
         <Route path='*' element={<NotFound />} />  
