@@ -23,7 +23,7 @@ function App() {
     <section>
 
       <Routes>
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={<Categories/>} />
         <Route path='/categories' element={<Categories />} />
         <Route path='/addcategory' element={<AddCategory />} />
         <Route path='/addcategory/:id' element={<AddCategory />} />

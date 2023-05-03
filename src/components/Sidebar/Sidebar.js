@@ -30,14 +30,14 @@ const Sidebar = () => {
       </div>
 
       <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-        <li className="nav-item my-2">
-          <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+        {/* <li className="nav-item my-2">
+          <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
             to="/"  >
             <i className="bi bi-house-door"></i>
             <span className="ms-1 d-none d-sm-inline">Home</span> </NavLink>
 
 
-        </li>
+        </li> */}
 
         <li>
 
@@ -47,21 +47,21 @@ const Sidebar = () => {
 
           <ul className="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
             <li className="w-100">
-              <NavLink className=' ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              <NavLink className=' ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/categories"  > Categories</NavLink>
             </li>
             <li>
 
-              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/addcategory"  > Add Category  </NavLink>
             </li>
             <li>
-              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/Subcategory"  > Sub Category  </NavLink>
             </li>
             <li>
               {/*<Link  className=" px-0"> <span className="d-none d-sm-inline">Item</span> 2 </Link> */}
-              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/addSubCategory"  >Add Sub Category  </NavLink>
             </li>
           </ul>
@@ -77,11 +77,11 @@ const Sidebar = () => {
 
             <li>
 
-              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/products"  > Products</NavLink>
             </li>
             <li>
-              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/addproduct"  > Add Product</NavLink>
             </li>
           </ul>
@@ -96,11 +96,11 @@ const Sidebar = () => {
 
             <li>
 
-              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/ordersList"> Order List</NavLink>
             </li>
             <li>
-              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+              <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/AddOrder"  > Add Order</NavLink>
             </li>
           </ul>
@@ -108,7 +108,7 @@ const Sidebar = () => {
 
         <li>
           <Link className="  text-decoration-none text-white px-0 align-middle my-3">
-            <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+            <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
               to="/customers"  > <i className="bi bi-people-fill me-sm-2">
               </i>Customers List </NavLink>
           </Link>
@@ -117,7 +117,7 @@ const Sidebar = () => {
 
         <li>
           <Link className="  text-decoration-none text-white px-0 align-middle my-3">
-            <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'blue' } : { color: "white" }}
+            <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
               to="/customer"  > <i className="bi bi-people-fill me-sm-2">
               </i>Customers </NavLink>
           </Link>
