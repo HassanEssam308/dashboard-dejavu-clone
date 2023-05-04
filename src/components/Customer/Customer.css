@@ -1,0 +1,36 @@
+.container{
+    padding: 5px;
+  
+}
+.s{
+    box-sizing: content-box;
+    border-radius: 50%;
+}
+.pho{
+    display: block;
+  text-align: center;
+   padding: 10px;
+   
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+.sec1{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.ord{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+a{
+    text-decoration:none;
+}
+.shadow{
+    border-radius: 0;
+    padding:  5%;
+}
