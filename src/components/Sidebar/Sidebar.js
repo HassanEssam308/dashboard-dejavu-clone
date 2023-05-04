@@ -13,7 +13,7 @@ const Sidebar = () => {
       <span className="fs-5">Dejavu</span>
 
 
-      <div className="dropdown  my-3">
+      {/* <div className="dropdown  my-3">
         <Link className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
           data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" className="rounded-circle" />
@@ -27,7 +27,7 @@ const Sidebar = () => {
           </li>
           <li><Link className="dropdown-item text-decoration-none" >Sign out</Link></li>
         </ul>
-      </div>
+      </div> */}
 
       <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
         {/* <li className="nav-item my-2">
