@@ -467,7 +467,7 @@ const AddProduct = () => {
                         })}
                         <br />
 
-
+{/* 
                         {(id)? Object.keys(product.colors_ar).map((key, index) => {
                             return (
                                 <div key={index} className="form-group coulmn">
@@ -497,7 +497,7 @@ const AddProduct = () => {
                             );
 
                         })}
-                        <br />
+                        <br /> */}
 
                         {(id) ? Object.keys(product.size).map((key, index) => {
                             return (

@@ -10,10 +10,10 @@ const Sidebar = () => {
     <div style={{ backgroundColor: "rgb(61, 70, 77)","fontSize":'1rem' }} className=" h-100  min-vh-100  pt-5 
       d-flex flex-column   align-items-sm-start px-3 pt-2 ps-md-4   text-white  w-100">
 
-      <span className="fs-5">Dejavu</span>
+      <span className="fs-5 my-md-3">Dejavu</span>
 
 
-      <div className="dropdown  my-3">
+      {/* <div className="dropdown  my-3">
         <Link className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
           data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" className="rounded-circle" />
@@ -27,7 +27,7 @@ const Sidebar = () => {
           </li>
           <li><Link className="dropdown-item text-decoration-none" >Sign out</Link></li>
         </ul>
-      </div>
+      </div> */}
 
       <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
         {/* <li className="nav-item my-2">
