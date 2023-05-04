@@ -1,39 +1,64 @@
-import { Link } from 'react-router-dom'
-import './CustomerList.css'
 
+import './CustomerList.css'
+import { Link } from "react-router-dom"
+import { db } from '../../config/firestore_config';
+import { collection, getDocs , deleteDoc,doc } from "firebase/firestore";
+import React, { useEffect, useState } from 'react';
 
 
 export default function CustomerList()
 {
-    const customer = [
-        {number:3451,name:'Jessica Moore' , email:"moore-jessica@example.com",img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-1-40x40.jpg",registered:'June 26, 2021',country:'Russia',group:'Default',spent:20.534},
-        {number:3451,name:'loniel mark',img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-2-40x40.jpg",registered:'July 20, 2021',country:'USA',group:'Wholesale',spent:34.324},
-        {number:3451,name:'Helena Garcia',img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-3-40x40.jpg",registered:'Feb 5, 2021',country:'Poland',group:'Default',spent:42.423},
-        {number:3451,name:'Anna Wilson',img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-12-40x40.jpg",registered:'Aug 1, 2020',country:'England',group:'Wholesale',spent:23.564},
-        {number:3451,name:'Jacob Lee',img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-11-40x40.jpg",registered:'Jan 9, 2020',country:'Germany',group:'Default',spent:33.987},
-        {number:3451,name:'Brian Wood',img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-7-40x40.jpg",registered:'Dec 18, 2020',country:'USA',group:'Wholesale',spent:22.984},
-        {number:3451,name:'Charlotte Jones',img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-9-40x40.jpg",registered:'Nov 30, 2020',country:'Russia',group:'Default',spent:45.878},
-        {number:3451,name:'Kevin Smith',img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-6-40x40.jpg",registered:'Apr 6, 2021',country:'Germany',group:'Wholesale',spent:30.489},
-        
+    const [Users , setUsers] = useState([]);
 
-    ] 
+    const fetchUser = async () => {
+        
+        await getDocs(collection(db, "users"))
+            .then((querySnapshot)=>{ 
+                const newData = querySnapshot.docs
+                .map((doc) => ({...doc.data(), id:doc.id }));
+                setUsers(newData);
+                console.log(newData) 
+            })
+        }
+    
+    useEffect(() => 
+    {
+        fetchUser();
+        if(Users.length > 0)
+        {
+            deleteUser();
+        }
+    } , [Users] );
+
+    const deleteUser = async (userID) => 
+    {
+        try {
+            await deleteDoc(doc(db,"users",userID))
+            console.log("delete User");
+        } 
+        catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
         <div className='container-fluid bg-light'>
             <section className='row'>
-                <div className='col m-4'>
+                <div className='col-10 m-4'>
                     <div>
-                        <a href='#' className='dashboard'>Dashboard</a>
+                        <a href='/' className='dashboard'>Dashboard</a>
                         <span className='text'>/</span>
-                        <span className='text ms-2'>Customer List</span>
+                        <span className='text ms-2'>Users</span>
                     </div>
                     <div>
-                        <h3>Customer List</h3>    
+                        <h3>Authenticated Users</h3>    
                     </div>   
                 </div>
-                <div className='col-2 mt-5'>
-                <button type="button" className="button">New customer</button>
+                <div className='col mt-5'>
+                <Link to={'/adduser'}>
+                <button type="button" className="btn btn-warning rounded-0 px-4">New User</button>
+                </Link>
                 </div>
             </section>
             <div>
@@ -42,39 +67,28 @@ export default function CustomerList()
                 <thead>
                     <tr>
                         <th scope="col"><input className='checkbox' type='checkbox'></input></th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Registered</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Group</th>
-                        <th scope="col">Spent</th>
+                        <th scope="col">Number</th>
                        
-                        <th scope='col'></th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
                     {
-                    customer.map((record1,index)=>{
-                    return <tr key={index}>
-                    <td><input className='checkbox' type='checkbox'></input></td>
-                    <td>
-                        <div>
-                        <img src={record1.img}/>  
-                      
-                             <Link  className='record'>{'  '}{record1.name}</Link><br/>  
-                         
-                        
+                    (Users.length>0) ? Users?.map((user,index)=>{
+                        return <tr key={index}>
+                        <td><input className='checkbox' type='checkbox'></input></td>
+                        <td><Link to={`/orders/${user.id}`} className='record'>#{user.id}</Link></td>
+                        <td>{user.firstname}</td>
+                        <td>{user.lastname}</td>
+                        <td>{user.email}</td>
+                        <td><a href='/customer' className='record'>{user.customer}</a></td>
                        
-                        </div>
-                       
-                    </td>
-                    <td>{record1.registered}</td>
-                    <td><a href='#' className='record'>{record1.country}</a></td>
-                    <td><p className='record'>{record1.group}</p></td>
-                    <td><p className='record'>${record1.spent}</p></td>
-                 
-                 
-                    </tr>
-                    })
+                        <td><button type="button" className="btn btn-danger" onClick={()=>deleteUser(user.id)}><i role="button" className="bi bi-trash3"></i></button></td>
+                        </tr>
+                        }):(<h1 className='m-4'>No Users</h1>)
                     }
                 </tbody>
                 </table>
