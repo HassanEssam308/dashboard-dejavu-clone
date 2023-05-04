@@ -10,7 +10,7 @@ const Sidebar = () => {
     <div style={{ backgroundColor: "rgb(61, 70, 77)","fontSize":'1rem' }} className=" h-100  min-vh-100  pt-5 
       d-flex flex-column   align-items-sm-start px-3 pt-2 ps-md-4   text-white  w-100">
 
-      <span className="fs-5">Dejavu</span>
+      <span className="fs-5 my-md-3">Dejavu</span>
 
 
       {/* <div className="dropdown  my-3">

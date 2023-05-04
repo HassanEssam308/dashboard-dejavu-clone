@@ -468,7 +468,9 @@ const AddProduct = () => {
                         <br />
 
 
-                        {/* {(id)? Object.keys(product.colors_ar).map((key, index) => {
+{/* 
+                        {(id)? Object.keys(product.colors_ar).map((key, index) => {
+
                             return (
                                 <div key={index} className="form-group coulmn">
                                     <label htmlFor="colors_ar" className="col-sm-2 col-form-label">color_ar No {index + 1}</label>
