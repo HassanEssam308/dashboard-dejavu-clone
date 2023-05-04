@@ -53,24 +53,24 @@ export default function CustomerList()
                 </thead>
                 <tbody>
                     {
-                    customer.map((record1,index)=>{
+                    customer.map((record,index)=>{
                     return <tr key={index}>
                     <td><input className='checkbox' type='checkbox'></input></td>
                     <td>
                         <div>
-                        <img src={record1.img}/>  
+                        <img src={record.img}/>  
                       
-                             <Link  className='record'>{'  '}{record1.name}</Link><br/>  
+                             <Link  className='record'>{'  '}{record.name}</Link><br/>  
                          
                         
                        
                         </div>
                        
                     </td>
-                    <td>{record1.registered}</td>
-                    <td><a href='#' className='record'>{record1.country}</a></td>
-                    <td><p className='record'>{record1.group}</p></td>
-                    <td><p className='record'>${record1.spent}</p></td>
+                    <td>{record.registered}</td>
+                    <td><a href='#' className='record'>{record.country}</a></td>
+                    <td><p className='record-bg1'>{record.group}</p></td>
+                    <td><p className='record-bg2'>${record.spent}</p></td>
                  
                  
                     </tr>

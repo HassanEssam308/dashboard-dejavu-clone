@@ -11,7 +11,7 @@ import Products1 from './pages/Products/product';
 import OrdersList from './pages/OrdersList/OrdersList';
 import OrderDetails from './pages/OrderDetails/OrderDetails';
 import CustomerList from './pages/CustomerList/CustomerList'
-import Adduser from './pages/AddUser/Adduser'
+import Customer from './pages/Customer/Customer'
 import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
 import AddOrder from './pages/AddOrder/AddOrder';
@@ -33,12 +33,11 @@ function App() {
         <Route path='/products' element={<Products1/>}/>    
         <Route path='/addproduct/:id' element={<AddProduct/>}/>  
         <Route path='/addproduct' element={<AddProduct/>}/>
-        <Route path='/adduser' element={<Adduser/>}/>
         <Route path='/ordersList' element={<OrdersList />} />
         <Route path='/AddOrder' element={<AddOrder/>}/>
         <Route path='/Orders/:id' element={<OrderDetails />} />  
-        <Route path='/users' element={<CustomerList />} />  
-        
+        <Route path='/customers' element={<CustomerList />} />  
+        <Route path='/customer' element={<Customer />} />  
         <Route path='*' element={<NotFound />} />  
 
       </Routes> 
