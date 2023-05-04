@@ -5,6 +5,8 @@ import './CustomerList.css'
 
 export default function CustomerList()
 {
+
+    
     const customer = [
         {number:3451,name:'Jessica Moore' , email:"moore-jessica@example.com",img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-1-40x40.jpg",registered:'June 26, 2021',country:'Russia',group:'Default',spent:20.534},
         {number:3451,name:'loniel mark',img : "https://stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/images/customers/customer-2-40x40.jpg",registered:'July 20, 2021',country:'USA',group:'Wholesale',spent:34.324},
