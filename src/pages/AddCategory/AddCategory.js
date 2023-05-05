@@ -33,6 +33,7 @@ const AddCategory = () => {
     const categories = useSelector((state) => state.categories.categories)
 
     useEffect(() => {
+        console.log("ADD category");
         dispatch(changeCategories())
         if (id) {
             setTitleOfPage('Edit Category')

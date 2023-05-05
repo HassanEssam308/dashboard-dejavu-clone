@@ -53,6 +53,7 @@ const AddProduct = () => {
         subiderr: '',
     })
     useEffect(() => {
+        console.log("ADD product");
         console.log(id + 'ids');
         if (id) {
             settitle('Show More')

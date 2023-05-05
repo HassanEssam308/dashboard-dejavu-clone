@@ -23,6 +23,7 @@ const Products1 = () => {
 
 
     useEffect(() => {
+        console.log('Products1');
         dispatch(ProductsList());
         dispatch(changeCategories());
         dispatch(changeSubCategories());

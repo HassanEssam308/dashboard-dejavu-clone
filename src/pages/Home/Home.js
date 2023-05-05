@@ -1,6 +1,7 @@
 
 
 let Home = () => {
+    console.log("home");
     return (
         <div>
             {/* logo header */}
