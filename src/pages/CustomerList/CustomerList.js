@@ -78,6 +78,7 @@ export default function CustomerList()
                         <th scope="col">E_mail</th>
                         <th scope="col">Country</th>
                         <th scope="col">Group</th>
+                        
                         <th scope="col">Spent</th> */}
 
                          <th scope="col">ID</th>
