@@ -116,11 +116,11 @@ const Sidebar = () => {
         </li>
 
         <li>
-          <Link className="  text-decoration-none text-white px-0 align-middle my-3">
+          {/* <Link className="  text-decoration-none text-white px-0 align-middle my-3">
             <NavLink className=' text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
               to="/customer"  > <i className="bi bi-people-fill me-sm-2">
               </i>Customers </NavLink>
-          </Link>
+          </Link> */}
 
         </li>
       </ul>

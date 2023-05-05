@@ -3,6 +3,7 @@ import './NotFound.css';
 import { Link } from 'react-router-dom';
 
 const NotFound = () => {
+    console.log('NotFound');
     return (
         <div  >
             <h1 class="zoom-area" >404 Error </h1>

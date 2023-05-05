@@ -42,6 +42,7 @@ const AddSubCategory = () => {
     const subCategories = useSelector((state) => state.subCategories.subCategories)
 
     useEffect(() => {
+        console.log("ADD subCategory");
         dispatch(changeSubCategories())
         dispatch(changeCategories())
         if (id) {

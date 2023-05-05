@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Col, Button, Row, Container } from "react-bootstrap";
 import "../Customer/Customer.css"
+import { db } from "../../config/firestore_config";
+import { doc, onSnapshot } from "firebase/firestore";
+import { useParams } from "react-router-dom";
 
 export default function Customer() {
+    console.log("Customer");
 
+    const {id} = useParams();
+    const [userDetails, setUserDetails] = useState({});
+
+    
+  function  getUser(id){
+        onSnapshot(doc(db, "users",id ), (doc) => {
+            console.log("Current data: ", doc.data());
+            setUserDetails({ ...doc.data(), id: doc.id })
+        });
+    }
+    useEffect(() => {
+        getUser(id)
+    }, []);
+
+
+   
     const customer = [
         {
             name: "Jessica Moore",

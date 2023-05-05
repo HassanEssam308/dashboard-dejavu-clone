@@ -37,7 +37,7 @@ function App() {
         <Route path='/AddOrder' element={<AddOrder/>}/>
         <Route path='/Orders/:id' element={<OrderDetails />} />  
         <Route path='/customers' element={<CustomerList />} />  
-        <Route path='/customer' element={<Customer />} />  
+        <Route path='/customer/:id' element={<Customer />} />  
         <Route path='*' element={<NotFound />} />  
 
       </Routes> 

@@ -12,7 +12,7 @@ const Categories = () => {
     const categories = useSelector((state) => state.categories.categories)
 
     useEffect(() => {
-
+        console.log(" categories: " );
         dispatch(changeCategories())
 
 

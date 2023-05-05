@@ -15,6 +15,7 @@ const SubCategory = () => {
     const categories = useSelector((stat) => stat.categories.categories)
 
     useEffect(() => {
+        console.log('SubCategory');
 
         dispatch(changeSubCategories())
         dispatch(changeCategories())
