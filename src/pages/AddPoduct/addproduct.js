@@ -1,7 +1,7 @@
 import { addDoc, doc, updateDoc, collection, setDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams,useNavigate } from 'react-router-dom';
 import { db } from '../../config/firestore_config';
 import changeCategories from '../../store/Actions/categoriesAction';
 import ProductsList from '../../store/Actions/ProductsList';
@@ -31,6 +31,7 @@ const AddProduct = () => {
     const [sizequnt, setsizequnt] = useState({});
     const [title, settitle] = useState('Add More');
     const [title1, settitle1] = useState('Add');
+    const navigate = useNavigate()
 
     const [product, setproduc] = useState({
         catid: '',
@@ -63,7 +64,6 @@ const AddProduct = () => {
             setproduc({ ...prd });
             for (var i in prd.colors) {
                 mpcolor.push(i);
-
 
 
             }
@@ -146,10 +146,27 @@ const AddProduct = () => {
                 }).catch((err) => {
                     console.log(err);
                 })
+                setproduc({
+                    catid: '',
+                    subid: '',
+                    name: '',
+                    name_ar: '',
+                    new_price: '',
+                    old_price: '',
+                    size: {},
+                    offer: '',
+                    imgs: new Array(),
+                    discount: '',
+                    details: new Array(),
+                    details_ar: new Array(),
+                    colors: {},
+                    colors_ar: {}
+                })
 
             }
 
         }
+        navigate('/products');
 
 
 
