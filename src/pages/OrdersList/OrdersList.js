@@ -53,11 +53,11 @@ export default function OrdersList() {
                             <h3>Orders</h3>
                         </div>
                     </div>
-                    <div className='col mt-5'>
+                   {/*  <div className='col mt-5'>
                         <Link to={'/AddOrder'}>
                             <button type="button" className="btn btn-warning rounded-0 px-4">New Orders</button>
                         </Link>
-                    </div>
+                    </div> */}
                 </section>
                 <div>
                     <div className="table-responsive mx-4 mb-5 bg-white p-2 shadow">

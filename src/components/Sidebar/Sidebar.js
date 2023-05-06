@@ -99,10 +99,10 @@ const Sidebar = () => {
               <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/ordersList"> Order List</NavLink>
             </li>
-            <li>
+           {/*  <li>
               <NavLink className='ms-sm-2 text-decoration-none' style={({ isActive }) => (isActive) ? { color: 'orange' } : { color: "white" }}
                 to="/AddOrder"  > Add Order</NavLink>
-            </li>
+            </li> */}
           </ul>
         </li>
 

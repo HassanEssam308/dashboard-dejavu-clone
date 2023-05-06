@@ -64,9 +64,9 @@ export default function CustomerList()
                         <h3>Customer List</h3>    
                     </div>   
                 </div>
-                <div className='col-2 mt-5'>
-                <button type="button" className="button">New customer</button>
-                </div>
+                {/* <div className='col-2 mt-5'>
+                 <button type="button" className="button">New customer</button> 
+                </div> */}
             </section>
             <div>
             <div className="table-responsive mx-4 mb-5 bg-white p-2 shadow">
