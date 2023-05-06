@@ -74,18 +74,18 @@ export default function CustomerList()
                 <thead>
                     <tr>
                         <th scope="col"><input className='checkbox' type='checkbox'></input></th>
-                        {/* <th scope="col">Name</th>
+                         <th scope="col">Name</th>
                         <th scope="col">E_mail</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Group</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Address</th>
 
-                        <th scope="col">Spent</th> */}
+                        {/* <th scope="col">Spent</th>  */}
 
 
-                         <th scope="col">ID</th>
+                       {/*   <th scope="col">ID</th>
                         <th scope="col">FirstName</th>
                         <th scope="col">LastName</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Email</th> */}
                       
                        
                         <th scope='col'></th>
@@ -100,14 +100,14 @@ export default function CustomerList()
                         <div>
                         <img src={record1.img}/>  
                       
-                             <Link  to={`/customer/${record1.id}`}className='record'>{'  '}#{record1.id} </Link><br/>  
+                             <Link  to={`/customer/${record1.id}`}className='record'>{'  '}{record1.firstname} </Link><br/>  
                 
                         </div>
                        
                     </td>
-                    <td>{record1. firstname}</td>
-                    <td><a href='#' className='record'>{record1.lastname}</a></td>
-                    <td><p className='record'>{record1.email}</p></td>
+                    <td>{record1. email}</td>
+                    <td><p  className='record'>{record1.city}</p></td>
+                    <td><p className='record'>{record1.address}</p></td>
                     {/* <td><p className='record'>${record1.spent}</p></td> */}
                  
                  
