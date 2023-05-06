@@ -1,7 +1,7 @@
 import { addDoc, doc, updateDoc, collection, setDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams,useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { db } from '../../config/firestore_config';
 import changeCategories from '../../store/Actions/categoriesAction';
 import ProductsList from '../../store/Actions/ProductsList';
@@ -323,11 +323,13 @@ const AddProduct = () => {
                         <div className="form-group row mb-3">
                             <label htmlFor="subid" className="col-sm-3 col-form-label ">Select SubCategory</label>
                             <select className="form-control" name="subid" id="subid" onChange={(e) => handleform(e)}  >
-                                <option name='subid' value={'HNfgWKICjVLXdZnInCK6'}   >Handbags</option>
-                                <option name='subid' value={'Mp7jz79bKhJXW0TsHjw8'}   >Shoulder Bags</option>
+                                <option name='subid' value={'rd6s5oYcILE2fIPKvzuM'}   >Ankle Boots</option>
                                 <option name='subid' value={'NhVZroZEavmDMtOoQvdx'}   >High Boots</option>
                                 <option name='subid' value={'J57FdZwBd0h0PbLsxpyd'}   >Half Boots</option>
-                                <option name='subid' value={'rd6s5oYcILE2fIPKvzuM'}   >Ankle Boots</option>
+
+                                <option name='subid' value={'HNfgWKICjVLXdZnInCK6'}   >Handbags</option>
+                                <option name='subid' value={'Mp7jz79bKhJXW0TsHjw8'}   >Shoulder Bags</option>
+
 
 
                             </select>
@@ -382,7 +384,7 @@ const AddProduct = () => {
                             </div>
                         </div>
                         <br />
-                       
+
                         {detaillist.map((singldetal, index) => {
                             return (
                                 <div key={index} className="form-group coulmn">
@@ -486,7 +488,7 @@ const AddProduct = () => {
                         <br />
 
 
-{/* 
+                        {/* 
                         {(id)? Object.keys(product.colors_ar).map((key, index) => {
 
                             return (
